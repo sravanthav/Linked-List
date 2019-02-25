@@ -8,7 +8,6 @@ Write your code in this editor and press "Run" button to compile and execute it.
 
 #include <stdio.h>
 
-
 typedef struct node
 {
   int val;
@@ -42,8 +41,6 @@ void print_list (myNode * HEAD)
 	}
 	printf("\n");
   }
-  //if we are using tail
-  
 }
 
 void add_node (int val1)
@@ -60,12 +57,11 @@ void add_node (int val1)
     }
   else
     {
-      myNode *temp1,*temp2;
-      for (temp1=head; temp1 != NULL; temp1=temp1->next){
-          temp2 = temp1;
+      myNode *temp1;
+      for (temp1=head; temp1->next != NULL; temp1=temp1->next){
           //printf (" [%d]-> ", temp1->val);
       }
-      temp2->next = temp;
+      temp1->next = temp;
       // if we are using tail or know tail node then
       tail->next=temp;
       tail=temp;
@@ -73,7 +69,6 @@ void add_node (int val1)
 }
 
 void reverse_list(){
-
     myNode *p,*q,*r;
     if(head==NULL){
         return;
@@ -82,7 +77,7 @@ void reverse_list(){
     p=head;
     q=p->next;
     p->next = NULL;
-    
+
     while(q!=NULL){
         r=q->next;
         q->next=p;
@@ -90,6 +85,5 @@ void reverse_list(){
         q=r;
     }
     head = p;
-    
     print_list(head);
 }
